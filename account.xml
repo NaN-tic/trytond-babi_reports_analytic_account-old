@@ -155,7 +155,7 @@
         <field name="model" search="[('model','=','account.invoice.line')]"/>
         <field name="filter" ref="babi_reports_account_invoice.open_paid_customer_invoice_lines"/>
         <field name="name">Year - Analytic Account</field>
-        <field name="timeout" eval="60"/>
+        <field name="timeout" eval="1200"/>
     </record>
     <record model="babi.report-res.group"
             id="invoice_line_year_analyticaccount_group_babi_">
@@ -189,7 +189,7 @@
         <field name="parent_menu" ref="babi.menu_babi"/>
         <field name="model" search="[('model','=','analytic_account.line')]"/>
         <field name="name">Amount - Year</field>
-        <field name="timeout" eval="60"/>
+        <field name="timeout" eval="1200"/>
     </record>
     <record model="babi.report-res.group"
             id="analytic_line_account_year_group_babi_">
@@ -221,7 +221,7 @@
         <field name="parent_menu" ref="babi.menu_babi"/>
         <field name="model" search="[('model','=','analytic_account.line')]"/>
         <field name="name">User - Year - Account</field>
-        <field name="timeout" eval="60"/>
+        <field name="timeout" eval="1200"/>
     </record>
     <record model="babi.report-res.group"
             id="analytic_line_user_year_account_group_babi_">
