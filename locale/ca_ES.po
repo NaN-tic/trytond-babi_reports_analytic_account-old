@@ -1,0 +1,148 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "model:babi.dimension,name:analytic_line_account_year__account"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "model:babi.dimension,name:analytic_line_account_year__year"
+msgid "Year"
+msgstr "Any"
+
+msgctxt "model:babi.dimension,name:analytic_line_user_year_account__account"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "model:babi.dimension,name:analytic_line_user_year_account__user"
+msgid "User"
+msgstr "Usuari"
+
+msgctxt ""
+"model:babi.dimension,name:invoice_line_year_analyticaccount__analytic_account"
+msgid "Analytic Account"
+msgstr "Compte analític"
+
+msgctxt "model:babi.dimension,name:invoice_line_year_analyticaccount__year"
+msgid "Year"
+msgstr "Any"
+
+msgctxt ""
+"model:babi.dimension.column,name:analytic_line_user_year_account__year"
+msgid "Year"
+msgstr "Any"
+
+msgctxt ""
+"model:babi.expression,name:account_invoice_line_analytic_account_name"
+msgid "Analytic Account"
+msgstr "Compte analític"
+
+msgctxt "model:babi.expression,name:account_move_line_analytic_account"
+msgid "Analytic Account"
+msgstr "Compte analític"
+
+msgctxt "model:babi.expression,name:account_move_line_analytic_account_name"
+msgid "Analytic Account Name"
+msgstr "Nom compte analític"
+
+msgctxt "model:babi.expression,name:analytic_account_line"
+msgid "ID"
+msgstr "Identificador"
+
+msgctxt "model:babi.expression,name:analytic_account_line_account"
+msgid "Analytic Account"
+msgstr "Compte analític"
+
+msgctxt "model:babi.expression,name:analytic_account_line_account_name"
+msgid "Analytic Account Name"
+msgstr "Nom compte analític"
+
+msgctxt "model:babi.expression,name:analytic_account_line_amount"
+msgid "Debit - Credit"
+msgstr "Deure - Haver"
+
+msgctxt "model:babi.expression,name:analytic_account_line_credit"
+msgid "-Credit"
+msgstr "-Credit"
+
+msgctxt "model:babi.expression,name:analytic_account_line_date"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "model:babi.expression,name:analytic_account_line_day"
+msgid "Day"
+msgstr "Dia"
+
+msgctxt "model:babi.expression,name:analytic_account_line_debit"
+msgid "Debit"
+msgstr "Deure"
+
+msgctxt "model:babi.expression,name:analytic_account_line_general_account"
+msgid "General Account"
+msgstr "Compte general"
+
+msgctxt ""
+"model:babi.expression,name:analytic_account_line_general_account_code"
+msgid "General Account Code"
+msgstr "Codi compte general"
+
+msgctxt ""
+"model:babi.expression,name:analytic_account_line_general_account_name"
+msgid "General Account Name"
+msgstr "Nom compte general"
+
+msgctxt "model:babi.expression,name:analytic_account_line_month"
+msgid "Month"
+msgstr "Mes"
+
+msgctxt "model:babi.expression,name:analytic_account_line_move_name"
+msgid "Move"
+msgstr "Moviment"
+
+msgctxt "model:babi.expression,name:analytic_account_line_name"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "model:babi.expression,name:analytic_account_line_self"
+msgid "Line"
+msgstr "Línia"
+
+msgctxt "model:babi.expression,name:analytic_account_line_user_name"
+msgid "User"
+msgstr "Usuari"
+
+msgctxt "model:babi.expression,name:analytic_account_line_week"
+msgid "Week"
+msgstr "Setmana"
+
+msgctxt "model:babi.expression,name:analytic_account_line_year"
+msgid "Year"
+msgstr "Any"
+
+msgctxt "model:babi.expression,name:analytic_account_line_year_month"
+msgid "Year-Month"
+msgstr "Any-Mes"
+
+msgctxt "model:babi.measure,name:analytic_line_account_year__amount"
+msgid "Debit - Credit"
+msgstr "Deure - Haver"
+
+msgctxt "model:babi.measure,name:analytic_line_user_year_account__amount"
+msgid "Debit - Credit"
+msgstr "Deure - Haver"
+
+msgctxt "model:babi.measure,name:invoice_line_year_analyticaccount__subtotal"
+msgid "Subtotal"
+msgstr "Subtotal"
+
+msgctxt "model:babi.report,name:analytic_line_account_year"
+msgid "Amount - Year"
+msgstr "Compte - Any"
+
+msgctxt "model:babi.report,name:analytic_line_user_year_account"
+msgid "User - Year - Account"
+msgstr "Usuari - Any - Compte"
+
+msgctxt "model:babi.report,name:invoice_line_year_analyticaccount"
+msgid "Year - Analytic Account"
+msgstr "Any - Compte analític"
