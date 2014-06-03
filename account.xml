@@ -1,260 +1,253 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0"?>
+<!-- The COPYRIGHT file at the top level of this repository contains the full
+     copyright notices and license terms. -->
 <tryton>
     <data>
+        <!--
+            Expressions
+        -->
+        <!-- analytic_account.line -->
+        <record model="babi.expression" id="account_invoice_line_analytic_account_name">
+            <field name="ttype">char</field>
+            <field name="model" search="[('model','=','account.invoice.line')]"/>
+            <field name="expression">o.analytic_accounts and ','.join([x.rec_name for x in o.analytic_accounts.accounts])</field>
+            <field name="name">Analytic Account</field>
+        </record>
+        <record model="babi.expression" id="account_move_line_analytic_account">
+            <field name="ttype">many2one</field>
+            <field name="model" search="[('model','=','account.move.line')]"/>
+            <field name="expression">o.analytic_accounts and o.analytic_accounts.accounts[0].id</field>
+            <field name="name">Analytic Account</field>
+            <field name="related_model" search="[('model', '=', 'analytic_account.account')]"/>
+        </record>
+        <record model="babi.expression" id="account_move_line_analytic_account_name">
+            <field name="ttype">char</field>
+            <field name="model" search="[('model','=','account.move.line')]"/>
+            <field name="expression">o.analytic_accounts and ','.join([x.name for x in o.analytic_accounts.accounts])</field>
+            <field name="name">Analytic Account Name</field>
+        </record>
+        <record model="babi.expression" id="analytic_account_line_self">
+            <field name="ttype">many2one</field>
+            <field name="model" search="[('model','=','analytic_account.line')]"/>
+            <field name="expression">o.id</field>
+            <field name="name">Line</field>
+            <field name="related_model" search="[('model','=','analytic_account.line')]"/>
+        </record>
+        <record model="babi.expression" id="analytic_account_line">
+            <field name="ttype">int</field>
+            <field name="model" search="[('model','=','analytic_account.line')]"/>
+            <field name="expression">o.id</field>
+            <field name="name">ID</field>
+        </record>
+        <record model="babi.expression" id="analytic_account_line_name">
+            <field name="ttype">char</field>
+            <field name="model" search="[('model','=','analytic_account.line')]"/>
+            <field name="expression">o.name</field>
+            <field name="name">Name</field>
+        </record>
+        <record model="babi.expression" id="analytic_account_line_year">
+            <field name="ttype">char</field>
+            <field name="model" search="[('model','=','analytic_account.line')]"/>
+            <field name="expression">y(o.date)</field>
+            <field name="name">Year</field>
+        </record>
+        <record model="babi.expression" id="analytic_account_line_month">
+            <field name="ttype">char</field>
+            <field name="model" search="[('model','=','analytic_account.line')]"/>
+            <field name="expression">m(o.date)</field>
+            <field name="name">Month</field>
+        </record>
+        <record model="babi.expression" id="analytic_account_line_day">
+            <field name="ttype">char</field>
+            <field name="model" search="[('model','=','analytic_account.line')]"/>
+            <field name="expression">d(o.date)</field>
+            <field name="name">Day</field>
+        </record>
+        <record model="babi.expression" id="analytic_account_line_week">
+            <field name="ttype">char</field>
+            <field name="model" search="[('model','=','analytic_account.line')]"/>
+            <field name="expression">w(o.date)</field>
+            <field name="name">Week</field>
+        </record>
+        <record model="babi.expression" id="analytic_account_line_year_month">
+            <field name="ttype">char</field>
+            <field name="model" search="[('model','=','analytic_account.line')]"/>
+            <field name="expression">ym(o.date)</field>
+            <field name="name">Year-Month</field>
+        </record>
+        <record model="babi.expression" id="analytic_account_line_date">
+            <field name="ttype">char</field>
+            <field name="model" search="[('model','=','analytic_account.line')]"/>
+            <field name="expression">ymd(o.date)</field>
+            <field name="name">Date</field>
+        </record>
+        <record model="babi.expression" id="analytic_account_line_general_account">
+            <field name="ttype">many2one</field>
+            <field name="model" search="[('model','=','analytic_account.line')]"/>
+            <field name="expression">o.move_line.account.id</field>
+            <field name="name">General Account</field>
+            <field name="related_model" search="[('model', '=', 'account.account')]"/>
+        </record>
+        <record model="babi.expression" id="analytic_account_line_general_account_code">
+            <field name="ttype">char</field>
+            <field name="model" search="[('model','=','analytic_account.line')]"/>
+            <field name="expression">o.move_line.account.code</field>
+            <field name="name">General Account Code</field>
+        </record>
+        <record model="babi.expression" id="analytic_account_line_general_account_name">
+            <field name="ttype">char</field>
+            <field name="model" search="[('model','=','analytic_account.line')]"/>
+            <field name="expression">o.move_line.account.name</field>
+            <field name="name">General Account Name</field>
+        </record>
+        <record model="babi.expression" id="analytic_account_line_account">
+            <field name="ttype">many2one</field>
+            <field name="model" search="[('model','=','analytic_account.line')]"/>
+            <field name="expression">o.account.id</field>
+            <field name="name">Analytic Account</field>
+            <field name="related_model" search="[('model', '=', 'analytic_account.account')]"/>
+        </record>
+        <record model="babi.expression" id="analytic_account_line_account_name">
+            <field name="ttype">char</field>
+            <field name="model" search="[('model','=','analytic_account.line')]"/>
+            <field name="expression">o.account.name</field>
+            <field name="name">Analytic Account Name</field>
+        </record>
+        <record model="babi.expression" id="analytic_account_line_move_name">
+            <field name="ttype">char</field>
+            <field name="model" search="[('model','=','analytic_account.line')]"/>
+            <field name="expression">o.move_line.move.rec_name</field>
+            <field name="name">Move</field>
+        </record>
+        <record model="babi.expression" id="analytic_account_line_credit">
+            <field name="ttype">float</field>
+            <field name="model" search="[('model','=','analytic_account.line')]"/>
+            <field name="expression">-o.credit</field>
+            <field name="name">-Credit</field>
+        </record>
+        <record model="babi.expression" id="analytic_account_line_debit">
+            <field name="ttype">float</field>
+            <field name="model" search="[('model','=','analytic_account.line')]"/>
+            <field name="expression">o.debit</field>
+            <field name="name">Debit</field>
+        </record>
+        <record model="babi.expression" id="analytic_account_line_amount">
+            <field name="ttype">float</field>
+            <field name="model" search="[('model','=','analytic_account.line')]"/>
+            <field name="expression">o.debit - o.credit</field>
+            <field name="name">Debit - Credit</field>
+        </record>
+        <record model="babi.expression" id="analytic_account_line_user_name">
+            <field name="ttype">char</field>
+            <field name="model" search="[('model','=','analytic_account.line')]"/>
+            <field name="expression">o.create_uid and o.create_uid.rec_name</field>
+            <field name="name">User</field>
+        </record>
 
-    <!--
-         Expressions
-    -->
+        <!--
+            Reports
+        -->
+        <!-- Year - Analytic Account | Subtotal -->
+        <record model="babi.report" id="invoice_line_year_analyticaccount">
+            <field name="parent_menu" ref="babi.menu_babi"/>
+            <field name="model" search="[('model','=','account.invoice.line')]"/>
+            <field name="filter" ref="babi_reports_account_invoice.open_paid_customer_invoice_lines"/>
+            <field name="name">Year - Analytic Account</field>
+            <field name="timeout" eval="1200"/>
+        </record>
+        <record model="babi.report-res.group"
+                id="invoice_line_year_analyticaccount_group_babi_">
+            <field name="report" ref="invoice_line_year_analyticaccount"/>
+            <field name="group" ref="babi.group_babi"/>
+        </record>
+        <record model="babi.dimension" id="invoice_line_year_analyticaccount__year">
+            <field name="report" ref="invoice_line_year_analyticaccount"/>
+            <field name="expression" ref="babi_reports_account_invoice.account_invoice_line_year"/>
+            <field name="name">Year</field>
+            <field name="sequence">1</field>
+        </record>
+        <record model="babi.dimension" id="invoice_line_year_analyticaccount__analytic_account">
+            <field name="report" ref="invoice_line_year_analyticaccount"/>
+            <field name="expression" ref="account_invoice_line_analytic_account_name"/>
+            <field name="name">Analytic Account</field>
+            <field name="sequence">2</field>
+        </record>
+        <record model="babi.measure" id="invoice_line_year_analyticaccount__subtotal">
+            <field name="report" ref="invoice_line_year_analyticaccount"/>
+            <field name="expression" ref="babi_reports_account_invoice.account_invoice_line_subtotal"/>
+            <field name="name">Subtotal</field>
+            <field name="aggregate">sum</field>
+        </record>
 
-    <!-- analytic_account.line -->
+        <!-- analytic_account.line -->
+        <!-- Account - Year | Quantity / Amount -->
+        <record model="babi.report" id="analytic_line_account_year">
+            <field name="parent_menu" ref="babi.menu_babi"/>
+            <field name="model" search="[('model','=','analytic_account.line')]"/>
+            <field name="name">Amount - Year</field>
+            <field name="timeout" eval="1200"/>
+        </record>
+        <record model="babi.report-res.group"
+                id="analytic_line_account_year_group_babi_">
+            <field name="report" ref="analytic_line_account_year"/>
+            <field name="group" ref="babi.group_babi"/>
+        </record>
+        <record model="babi.dimension" id="analytic_line_account_year__account">
+            <field name="report" ref="analytic_line_account_year"/>
+            <field name="expression" ref="analytic_account_line_account_name"/>
+            <field name="name">Account</field>
+            <field name="sequence">1</field>
+        </record>
+        <record model="babi.dimension" id="analytic_line_account_year__year">
+            <field name="report" ref="analytic_line_account_year"/>
+            <field name="expression" ref="analytic_account_line_year"/>
+            <field name="name">Year</field>
+            <field name="sequence">2</field>
+        </record>
+        <record model="babi.measure" id="analytic_line_account_year__amount">
+            <field name="report" ref="analytic_line_account_year"/>
+            <field name="expression" ref="analytic_account_line_amount"/>
+            <field name="name">Debit - Credit</field>
+            <field name="aggregate">sum</field>
+            <field name="sequence">1</field>
+        </record>
 
-    <record model="babi.expression" id="account_invoice_line_analytic_account_name">
-        <field name="ttype">char</field>
-        <field name="model" search="[('model','=','account.invoice.line')]"/>
-        <field name="expression">o.analytic_accounts and ','.join([x.rec_name for x in o.analytic_accounts.accounts])</field>
-        <field name="name">Analytic Account</field>
-    </record>
-    <record model="babi.expression" id="account_move_line_analytic_account">
-        <field name="ttype">many2one</field>
-        <field name="model" search="[('model','=','account.move.line')]"/>
-        <field name="expression">o.analytic_accounts and o.analytic_accounts.accounts[0].id</field>
-        <field name="name">Analytic Account</field>
-        <field name="related_model" search="[('model', '=', 'analytic_account.account')]"/>
-    </record>
-    <record model="babi.expression" id="account_move_line_analytic_account_name">
-        <field name="ttype">char</field>
-        <field name="model" search="[('model','=','account.move.line')]"/>
-        <field name="expression">o.analytic_accounts and ','.join([x.name for x in o.analytic_accounts.accounts])</field>
-        <field name="name">Analytic Account Name</field>
-    </record>
-    <record model="babi.expression" id="analytic_account_line_self">
-        <field name="ttype">many2one</field>
-        <field name="model" search="[('model','=','analytic_account.line')]"/>
-        <field name="expression">o.id</field>
-        <field name="name">Line</field>
-        <field name="related_model" search="[('model','=','analytic_account.line')]"/>
-    </record>
-    <record model="babi.expression" id="analytic_account_line">
-        <field name="ttype">int</field>
-        <field name="model" search="[('model','=','analytic_account.line')]"/>
-        <field name="expression">o.id</field>
-        <field name="name">ID</field>
-    </record>
-    <record model="babi.expression" id="analytic_account_line_name">
-        <field name="ttype">char</field>
-        <field name="model" search="[('model','=','analytic_account.line')]"/>
-        <field name="expression">o.name</field>
-        <field name="name">Name</field>
-    </record>
-    <record model="babi.expression" id="analytic_account_line_year">
-        <field name="ttype">char</field>
-        <field name="model" search="[('model','=','analytic_account.line')]"/>
-        <field name="expression">y(o.date)</field>
-        <field name="name">Year</field>
-    </record>
-    <record model="babi.expression" id="analytic_account_line_month">
-        <field name="ttype">char</field>
-        <field name="model" search="[('model','=','analytic_account.line')]"/>
-        <field name="expression">m(o.date)</field>
-        <field name="name">Month</field>
-    </record>
-    <record model="babi.expression" id="analytic_account_line_day">
-        <field name="ttype">char</field>
-        <field name="model" search="[('model','=','analytic_account.line')]"/>
-        <field name="expression">d(o.date)</field>
-        <field name="name">Day</field>
-    </record>
-    <record model="babi.expression" id="analytic_account_line_week">
-        <field name="ttype">char</field>
-        <field name="model" search="[('model','=','analytic_account.line')]"/>
-        <field name="expression">w(o.date)</field>
-        <field name="name">Week</field>
-    </record>
-    <record model="babi.expression" id="analytic_account_line_year_month">
-        <field name="ttype">char</field>
-        <field name="model" search="[('model','=','analytic_account.line')]"/>
-        <field name="expression">ym(o.date)</field>
-        <field name="name">Year-Month</field>
-    </record>
-    <record model="babi.expression" id="analytic_account_line_date">
-        <field name="ttype">char</field>
-        <field name="model" search="[('model','=','analytic_account.line')]"/>
-        <field name="expression">ymd(o.date)</field>
-        <field name="name">Date</field>
-    </record>
-    <record model="babi.expression" id="analytic_account_line_general_account">
-        <field name="ttype">many2one</field>
-        <field name="model" search="[('model','=','analytic_account.line')]"/>
-        <field name="expression">o.move_line.account.id</field>
-        <field name="name">General Account</field>
-        <field name="related_model" search="[('model', '=', 'account.account')]"/>
-    </record>
-    <record model="babi.expression" id="analytic_account_line_general_account_code">
-        <field name="ttype">char</field>
-        <field name="model" search="[('model','=','analytic_account.line')]"/>
-        <field name="expression">o.move_line.account.code</field>
-        <field name="name">General Account Code</field>
-    </record>
-    <record model="babi.expression" id="analytic_account_line_general_account_name">
-        <field name="ttype">char</field>
-        <field name="model" search="[('model','=','analytic_account.line')]"/>
-        <field name="expression">o.move_line.account.name</field>
-        <field name="name">General Account Name</field>
-    </record>
-    <record model="babi.expression" id="analytic_account_line_account">
-        <field name="ttype">many2one</field>
-        <field name="model" search="[('model','=','analytic_account.line')]"/>
-        <field name="expression">o.account.id</field>
-        <field name="name">Analytic Account</field>
-        <field name="related_model" search="[('model', '=', 'analytic_account.account')]"/>
-    </record>
-    <record model="babi.expression" id="analytic_account_line_account_name">
-        <field name="ttype">char</field>
-        <field name="model" search="[('model','=','analytic_account.line')]"/>
-        <field name="expression">o.account.name</field>
-        <field name="name">Analytic Account Name</field>
-    </record>
-    <record model="babi.expression" id="analytic_account_line_move_name">
-        <field name="ttype">char</field>
-        <field name="model" search="[('model','=','analytic_account.line')]"/>
-        <field name="expression">o.move_line.move.rec_name</field>
-        <field name="name">Move</field>
-    </record>
-    <record model="babi.expression" id="analytic_account_line_credit">
-        <field name="ttype">float</field>
-        <field name="model" search="[('model','=','analytic_account.line')]"/>
-        <field name="expression">-o.credit</field>
-        <field name="name">-Credit</field>
-    </record>
-    <record model="babi.expression" id="analytic_account_line_debit">
-        <field name="ttype">float</field>
-        <field name="model" search="[('model','=','analytic_account.line')]"/>
-        <field name="expression">o.debit</field>
-        <field name="name">Debit</field>
-    </record>
-    <record model="babi.expression" id="analytic_account_line_amount">
-        <field name="ttype">float</field>
-        <field name="model" search="[('model','=','analytic_account.line')]"/>
-        <field name="expression">o.debit - o.credit</field>
-        <field name="name">Debit - Credit</field>
-    </record>
-    <record model="babi.expression" id="analytic_account_line_user_name">
-        <field name="ttype">char</field>
-        <field name="model" search="[('model','=','analytic_account.line')]"/>
-        <field name="expression">o.create_uid and o.create_uid.rec_name</field>
-        <field name="name">User</field>
-    </record>
-
-    <!--
-         Reports
-    -->
-
-    <!-- Year - Analytic Account | Subtotal -->
-    <record model="babi.report" id="invoice_line_year_analyticaccount">
-        <field name="parent_menu" ref="babi.menu_babi"/>
-        <field name="model" search="[('model','=','account.invoice.line')]"/>
-        <field name="filter" ref="babi_reports_account_invoice.open_paid_customer_invoice_lines"/>
-        <field name="name">Year - Analytic Account</field>
-        <field name="timeout" eval="1200"/>
-    </record>
-    <record model="babi.report-res.group"
-            id="invoice_line_year_analyticaccount_group_babi_">
-        <field name="report" ref="invoice_line_year_analyticaccount"/>
-        <field name="group" ref="babi.group_babi"/>
-    </record>
-    <record model="babi.dimension" id="invoice_line_year_analyticaccount__year">
-        <field name="report" ref="invoice_line_year_analyticaccount"/>
-        <field name="expression" ref="babi_reports_account_invoice.account_invoice_line_year"/>
-        <field name="name">Year</field>
-        <field name="sequence">1</field>
-    </record>
-    <record model="babi.dimension" id="invoice_line_year_analyticaccount__analytic_account">
-        <field name="report" ref="invoice_line_year_analyticaccount"/>
-        <field name="expression" ref="account_invoice_line_analytic_account_name"/>
-        <field name="name">Analytic Account</field>
-        <field name="sequence">2</field>
-    </record>
-    <record model="babi.measure" id="invoice_line_year_analyticaccount__subtotal">
-        <field name="report" ref="invoice_line_year_analyticaccount"/>
-        <field name="expression" ref="babi_reports_account_invoice.account_invoice_line_subtotal"/>
-        <field name="name">Subtotal</field>
-        <field name="aggregate">sum</field>
-    </record>
-
-
-
-    <!-- analytic_account.line -->
-    <!-- Account - Year | Quantity / Amount -->
-    <record model="babi.report" id="analytic_line_account_year">
-        <field name="parent_menu" ref="babi.menu_babi"/>
-        <field name="model" search="[('model','=','analytic_account.line')]"/>
-        <field name="name">Amount - Year</field>
-        <field name="timeout" eval="1200"/>
-    </record>
-    <record model="babi.report-res.group"
-            id="analytic_line_account_year_group_babi_">
-        <field name="report" ref="analytic_line_account_year"/>
-        <field name="group" ref="babi.group_babi"/>
-    </record>
-    <record model="babi.dimension" id="analytic_line_account_year__account">
-        <field name="report" ref="analytic_line_account_year"/>
-        <field name="expression" ref="analytic_account_line_account_name"/>
-        <field name="name">Account</field>
-        <field name="sequence">1</field>
-    </record>
-    <record model="babi.dimension" id="analytic_line_account_year__year">
-        <field name="report" ref="analytic_line_account_year"/>
-        <field name="expression" ref="analytic_account_line_year"/>
-        <field name="name">Year</field>
-        <field name="sequence">2</field>
-    </record>
-    <record model="babi.measure" id="analytic_line_account_year__amount">
-        <field name="report" ref="analytic_line_account_year"/>
-        <field name="expression" ref="analytic_account_line_amount"/>
-        <field name="name">Debit - Credit</field>
-        <field name="aggregate">sum</field>
-        <field name="sequence">1</field>
-    </record>
-
-    <!-- User - Year / Account | Quantity -->
-    <record model="babi.report" id="analytic_line_user_year_account">
-        <field name="parent_menu" ref="babi.menu_babi"/>
-        <field name="model" search="[('model','=','analytic_account.line')]"/>
-        <field name="name">User - Year - Account</field>
-        <field name="timeout" eval="1200"/>
-    </record>
-    <record model="babi.report-res.group"
-            id="analytic_line_user_year_account_group_babi_">
-        <field name="report" ref="analytic_line_user_year_account"/>
-        <field name="group" ref="babi.group_babi"/>
-    </record>
-    <record model="babi.dimension" id="analytic_line_user_year_account__user">
-        <field name="report" ref="analytic_line_user_year_account"/>
-        <field name="expression" ref="analytic_account_line_user_name"/>
-        <field name="name">User</field>
-        <field name="sequence">1</field>
-    </record>
-    <record model="babi.dimension" id="analytic_line_user_year_account__account">
-        <field name="report" ref="analytic_line_user_year_account"/>
-        <field name="expression" ref="analytic_account_line_account_name"/>
-        <field name="name">Account</field>
-        <field name="sequence">1</field>
-    </record>
-    <record model="babi.dimension.column" id="analytic_line_user_year_account__year">
-        <field name="report" ref="analytic_line_user_year_account"/>
-        <field name="expression" ref="analytic_account_line_year"/>
-        <field name="name">Year</field>
-        <field name="sequence">2</field>
-    </record>
-    <record model="babi.measure" id="analytic_line_user_year_account__amount">
-        <field name="report" ref="analytic_line_user_year_account"/>
-        <field name="expression" ref="analytic_account_line_amount"/>
-        <field name="name">Debit - Credit</field>
-        <field name="aggregate">sum</field>
-        <field name="sequence">1</field>
-    </record>
-
-
-
+        <!-- User - Year / Account | Quantity -->
+        <record model="babi.report" id="analytic_line_user_year_account">
+            <field name="parent_menu" ref="babi.menu_babi"/>
+            <field name="model" search="[('model','=','analytic_account.line')]"/>
+            <field name="name">User - Year - Account</field>
+            <field name="timeout" eval="1200"/>
+        </record>
+        <record model="babi.report-res.group"
+                id="analytic_line_user_year_account_group_babi_">
+            <field name="report" ref="analytic_line_user_year_account"/>
+            <field name="group" ref="babi.group_babi"/>
+        </record>
+        <record model="babi.dimension" id="analytic_line_user_year_account__user">
+            <field name="report" ref="analytic_line_user_year_account"/>
+            <field name="expression" ref="analytic_account_line_user_name"/>
+            <field name="name">User</field>
+            <field name="sequence">1</field>
+        </record>
+        <record model="babi.dimension" id="analytic_line_user_year_account__account">
+            <field name="report" ref="analytic_line_user_year_account"/>
+            <field name="expression" ref="analytic_account_line_account_name"/>
+            <field name="name">Account</field>
+            <field name="sequence">1</field>
+        </record>
+        <record model="babi.dimension.column" id="analytic_line_user_year_account__year">
+            <field name="report" ref="analytic_line_user_year_account"/>
+            <field name="expression" ref="analytic_account_line_year"/>
+            <field name="name">Year</field>
+            <field name="sequence">2</field>
+        </record>
+        <record model="babi.measure" id="analytic_line_user_year_account__amount">
+            <field name="report" ref="analytic_line_user_year_account"/>
+            <field name="expression" ref="analytic_account_line_amount"/>
+            <field name="name">Debit - Credit</field>
+            <field name="aggregate">sum</field>
+            <field name="sequence">1</field>
+        </record>
     </data>
 </tryton>
